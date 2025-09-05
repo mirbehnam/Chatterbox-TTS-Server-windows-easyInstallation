@@ -486,6 +486,295 @@
         </div>
     </div>
 
+    <!-- YOUTUBE SUBSCRIBE BUTTON COMPONENT START -->
+
+    <!-- YOUTUBE SUBSCRIBE BUTTON COMPONENT START -->
+    <!-- You can copy from here to the end comment and paste into your HTML -->
+    
+    <div id="youtube-subscribe-widget" class="yt-widget">
+        <!-- Message Bubble -->
+        <div class="yt-message" id="messageBox">
+            <div class="yt-message-inner">
+                <span class="yt-emoji" id="messageEmoji">🚀</span>
+                <div class="yt-message-text">
+                    <div class="yt-title" id="messageTitle">Learn AI in 1 minute!</div>
+                    <div class="yt-subtitle" id="messageSubtitle">Join 10K+ subscribers</div>
+                </div>
+            </div>
+            <div class="yt-arrow"></div>
+        </div>
+        
+        <!-- Subscribe Button -->
+        <div class="yt-button-wrapper">
+            <a href="https://youtube.com/@HowToIn1Minute?sub_confirmation=1" target="_blank" class="yt-subscribe">
+                <svg class="yt-icon" width="20" height="14" viewBox="0 0 20 14">
+                    <path d="M19.582 2.186c-.229-1.013-1.016-1.8-2.029-2.029C16.048 0 9.87 0 9.87 0S3.692 0 2.187.157c-1.013.229-1.8 1.016-2.029 2.029C0 3.691 0 6.869 0 6.869s0 3.178.158 4.683c.229 1.013 1.016 1.8 2.029 2.029C3.692 13.74 9.87 13.74 9.87 13.74s6.178 0 7.683-.158c1.013-.229 1.8-1.016 2.029-2.029.158-1.505.158-4.683.158-4.683s0-3.178-.158-4.683z" fill="currentColor"/>
+                    <path d="M7.896 9.856V3.883l5.136 2.987-5.136 2.986z" fill="#fff"/>
+                </svg>
+                <span class="yt-text">Subscribe Now</span>
+            </a>
+            <button class="yt-close" onclick="hideWidget()">×</button>
+        </div>
+    </div>
+
+    <style>
+        .yt-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            font-family: 'Roboto', Arial, sans-serif;
+            animation: slideIn 1s ease-out;
+        }
+
+        .yt-message {
+            background: linear-gradient(135deg, #ff4757 0%, #ff3742 50%, #ff6b6b 100%);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s both;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 260px;
+        }
+
+        .yt-message:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(255, 71, 87, 0.6);
+        }
+
+        .yt-message-inner {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .yt-emoji {
+            font-size: 24px;
+            animation: bounce 2s infinite;
+        }
+
+        .yt-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 2px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .yt-subtitle {
+            font-size: 13px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .yt-arrow {
+            position: absolute;
+            bottom: -8px;
+            right: 30px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #ff4757;
+        }
+
+        .yt-button-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+
+        .yt-subscribe {
+            background: #ff0000;
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: buttonPulse 3s infinite;
+        }
+
+        .yt-subscribe:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .yt-close {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .yt-close:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1) rotate(-5deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-4px);
+            }
+            60% {
+                transform: translateY(-2px);
+            }
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(255, 0, 0, 0.5);
+            }
+        }
+
+        .yt-widget.hidden {
+            animation: slideOut 0.5s ease-in forwards;
+        }
+
+        @keyframes slideOut {
+            to {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .yt-widget {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .yt-message {
+                width: 220px;
+                padding: 14px 16px;
+            }
+            
+            .yt-title {
+                font-size: 14px;
+            }
+            
+            .yt-subtitle {
+                font-size: 12px;
+            }
+            
+            .yt-subscribe {
+                padding: 10px 14px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .yt-widget {
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .yt-message {
+                width: 200px;
+                padding: 12px 14px;
+            }
+        }
+    </style>
+
+    <script>
+        // Random messages array
+const messages = [
+    { emoji: '🚀', title: 'Explore AI With Us', subtitle: 'Join a growing learning community.' },
+    { emoji: '🤖', title: 'Your Friendly AI Guide', subtitle: 'Clear tutorials for everyone.' },
+    { emoji: '⚡', title: 'A Daily Dose of AI', subtitle: 'Subscribe for a smarter feed.' },
+    { emoji: '🧠', title: 'Grow Your Mind', subtitle: 'Learn AI concepts every day.' },
+    { emoji: '💡', title: 'Bright Ideas in AI', subtitle: 'Free tutorials, always.' },
+    { emoji: '🔥', title: 'Hot Topics in AI, Simplified', subtitle: 'Subscribe to stay in the loop.' },
+    { emoji: '✨', title: 'Effortless AI Learning', subtitle: 'Making complex topics simple.' },
+    { emoji: '💎', title: 'Get Your Daily Gem of AI', subtitle: 'Valuable content, totally free.' },
+    { emoji: '🎓', title: 'Your 60-Second AI Class', subtitle: 'Class is in session! Tap to join.' },
+    { emoji: '🌟', title: 'Shine with New AI Skills', subtitle: 'Easy tutorials for a big impact.' }
+];
+        function updateMessage() {
+            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+            
+            document.getElementById('messageEmoji').textContent = randomMsg.emoji;
+            document.getElementById('messageTitle').textContent = randomMsg.title;
+            document.getElementById('messageSubtitle').textContent = randomMsg.subtitle;
+        }
+
+        function hideWidget() {
+            document.getElementById('youtube-subscribe-widget').classList.add('hidden');
+            setTimeout(() => {
+                document.getElementById('youtube-subscribe-widget').style.display = 'none';
+            }, 500);
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            // Set random message after 1 second
+            setTimeout(updateMessage, 1000);
+            
+            // Change message every 4 seconds
+            setInterval(updateMessage, 10000);
+        });
+
+        // Click message to go to channel too
+        document.addEventListener('DOMContentLoaded', () => {
+            const messageBox = document.getElementById('messageBox');
+            if (messageBox) {
+                messageBox.addEventListener('click', () => {
+                    window.open('https://youtube.com/@HowToIn1Minute?sub_confirmation=1', '_blank');
+                });
+            }
+        });
+    </script>
+    
+    <!-- YOUTUBE SUBSCRIBE BUTTON COMPONENT END -->
     <script src="script.js" defer></script>
 </body>
 
