@@ -314,7 +314,20 @@ async def get_ui_initial_data():
             status_code=500, detail="Failed to load initial data for UI."
         )
 
-
+@app.post("/load_multilingual_model")
+async def load_multilingual_model_endpoint():
+    """Load the multilingual TTS model."""
+    from engine import load_multilingual_model
+    
+    try:
+        success = load_multilingual_model()
+        if success:
+            return {"status": "success", "message": "Multilingual model loaded successfully"}
+        else:
+            raise HTTPException(status_code=500, detail="Failed to load multilingual model")
+    except Exception as e:
+        logger.error(f"Error in load_multilingual_model_endpoint: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to load multilingual model: {str(e)}")
 # --- Configuration Management API Endpoints ---
 @app.post("/save_settings", response_model=UpdateStatusResponse, tags=["Configuration"])
 async def save_settings_endpoint(request: Request):
@@ -758,7 +771,13 @@ async def custom_tts_endpoint(
                 seed=(
                     request.seed if request.seed is not None else get_gen_default_seed()
                 ),
+                language=(
+                    request.language
+                    if request.language is not None
+                    else get_gen_default_language()
+                ),
             )
+
             perf_monitor.record(f"Engine synthesized chunk {i+1}")
 
             if chunk_audio_tensor is None or chunk_sr_from_engine is None:

@@ -1,6 +1,6 @@
 # requirements.txt
 
-chatterbox-tts==0.1.2
+git+https://github.com/mirbehnam/chatterbox.git
 
 # Core Web Framework
 fastapi

@@ -256,9 +256,26 @@
                                         </div>
                                         <div id="language-select-container">
                                             <label for="language" class="label-base">Language</label>
-                                            <select id="language" name="language" class="select-base w-36">
-                                                <option value="en">English</option>
-                                            </select>
+                                            <div class="flex items-center gap-2">
+                                                <select id="language" name="language" class="select-base flex-grow">
+                                                    <option value="en">English (en)</option>
+                                                </select>
+                                                <button type="button" id="multilingual-toggle-btn" class="btn-import"
+                                                    title="Enable multilingual support (downloads additional models)">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                        fill="currentColor">
+                                                        <path fill-rule="evenodd"
+                                                            d="M7 2a1 1 0 011 1v1h3a1 1 0 110 2H9.578a18.87 18.87 0 01-1.724 4.78c.29.354.596.696.914 1.026a1 1 0 11-1.44 1.389c-.188-.196-.373-.396-.554-.6a19.098 19.098 0 01-3.107 3.567 1 1 0 01-1.334-1.49 17.087 17.087 0 003.13-3.733 18.992 18.992 0 01-1.487-2.494 1 1 0 111.79-.89c.234.47.489.928.764 1.372.417-.934.752-1.913.997-2.927H3a1 1 0 110-2h3V3a1 1 0 011-1zm6 6a1 1 0 01.894.553l2.991 5.982a.869.869 0 01.02.037l.99 1.98a1 1 0 11-1.79.895L15.383 16h-4.764l-.723 1.447a1 1 0 11-1.79-.894l.99-1.98a.869.869 0 01.02-.037l2.991-5.982A1 1 0 0113 8zm-1.382 6h2.764L13 11.236 11.618 14z"
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                    Enable Multilingual
+                                                </button>
+                                            </div>
+                                            <p id="multilingual-info"
+                                                class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 hidden">
+                                                Multilingual support requires downloading additional models (~2-3GB).
+                                                This happens once when first enabled.
+                                            </p>
                                         </div>
                                         <div>
                                             <label for="output-format" class="label-base">Output Format</label>
@@ -490,7 +507,7 @@
 
     <!-- YOUTUBE SUBSCRIBE BUTTON COMPONENT START -->
     <!-- You can copy from here to the end comment and paste into your HTML -->
-    
+
     <div id="youtube-subscribe-widget" class="yt-widget">
         <!-- Message Bubble -->
         <div class="yt-message" id="messageBox">
@@ -503,13 +520,15 @@
             </div>
             <div class="yt-arrow"></div>
         </div>
-        
+
         <!-- Subscribe Button -->
         <div class="yt-button-wrapper">
             <a href="https://youtube.com/@HowToIn1Minute?sub_confirmation=1" target="_blank" class="yt-subscribe">
                 <svg class="yt-icon" width="20" height="14" viewBox="0 0 20 14">
-                    <path d="M19.582 2.186c-.229-1.013-1.016-1.8-2.029-2.029C16.048 0 9.87 0 9.87 0S3.692 0 2.187.157c-1.013.229-1.8 1.016-2.029 2.029C0 3.691 0 6.869 0 6.869s0 3.178.158 4.683c.229 1.013 1.016 1.8 2.029 2.029C3.692 13.74 9.87 13.74 9.87 13.74s6.178 0 7.683-.158c1.013-.229 1.8-1.016 2.029-2.029.158-1.505.158-4.683.158-4.683s0-3.178-.158-4.683z" fill="currentColor"/>
-                    <path d="M7.896 9.856V3.883l5.136 2.987-5.136 2.986z" fill="#fff"/>
+                    <path
+                        d="M19.582 2.186c-.229-1.013-1.016-1.8-2.029-2.029C16.048 0 9.87 0 9.87 0S3.692 0 2.187.157c-1.013.229-1.8 1.016-2.029 2.029C0 3.691 0 6.869 0 6.869s0 3.178.158 4.683c.229 1.013 1.016 1.8 2.029 2.029C3.692 13.74 9.87 13.74 9.87 13.74s6.178 0 7.683-.158c1.013-.229 1.8-1.016 2.029-2.029.158-1.505.158-4.683.158-4.683s0-3.178-.158-4.683z"
+                        fill="currentColor" />
+                    <path d="M7.896 9.856V3.883l5.136 2.987-5.136 2.986z" fill="#fff" />
                 </svg>
                 <span class="yt-text">Subscribe Now</span>
             </a>
@@ -634,6 +653,7 @@
                 transform: translateX(100px);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -645,9 +665,11 @@
                 transform: scale(0) rotate(-180deg);
                 opacity: 0;
             }
+
             50% {
                 transform: scale(1.1) rotate(-5deg);
             }
+
             100% {
                 transform: scale(1) rotate(0deg);
                 opacity: 1;
@@ -655,21 +677,31 @@
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
                 transform: translateY(0);
             }
+
             40% {
                 transform: translateY(-4px);
             }
+
             60% {
                 transform: translateY(-2px);
             }
         }
 
         @keyframes buttonPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
             }
+
             50% {
                 box-shadow: 0 4px 20px rgba(255, 0, 0, 0.5);
             }
@@ -692,20 +724,20 @@
                 bottom: 15px;
                 right: 15px;
             }
-            
+
             .yt-message {
                 width: 220px;
                 padding: 14px 16px;
             }
-            
+
             .yt-title {
                 font-size: 14px;
             }
-            
+
             .yt-subtitle {
                 font-size: 12px;
             }
-            
+
             .yt-subscribe {
                 padding: 10px 14px;
                 font-size: 13px;
@@ -717,7 +749,7 @@
                 bottom: 10px;
                 right: 10px;
             }
-            
+
             .yt-message {
                 width: 200px;
                 padding: 12px 14px;
@@ -727,21 +759,21 @@
 
     <script>
         // Random messages array
-const messages = [
-    { emoji: '🚀', title: 'Explore AI With Us', subtitle: 'Join a growing learning community.' },
-    { emoji: '🤖', title: 'Your Friendly AI Guide', subtitle: 'Clear tutorials for everyone.' },
-    { emoji: '⚡', title: 'A Daily Dose of AI', subtitle: 'Subscribe for a smarter feed.' },
-    { emoji: '🧠', title: 'Grow Your Mind', subtitle: 'Learn AI concepts every day.' },
-    { emoji: '💡', title: 'Bright Ideas in AI', subtitle: 'Free tutorials, always.' },
-    { emoji: '🔥', title: 'Hot Topics in AI, Simplified', subtitle: 'Subscribe to stay in the loop.' },
-    { emoji: '✨', title: 'Effortless AI Learning', subtitle: 'Making complex topics simple.' },
-    { emoji: '💎', title: 'Get Your Daily Gem of AI', subtitle: 'Valuable content, totally free.' },
-    { emoji: '🎓', title: 'Your 60-Second AI Class', subtitle: 'Class is in session! Tap to join.' },
-    { emoji: '🌟', title: 'Shine with New AI Skills', subtitle: 'Easy tutorials for a big impact.' }
-];
+        const messages = [
+            { emoji: '🚀', title: 'Explore AI With Us', subtitle: 'Join a growing learning community.' },
+            { emoji: '🤖', title: 'Your Friendly AI Guide', subtitle: 'Clear tutorials for everyone.' },
+            { emoji: '⚡', title: 'A Daily Dose of AI', subtitle: 'Subscribe for a smarter feed.' },
+            { emoji: '🧠', title: 'Grow Your Mind', subtitle: 'Learn AI concepts every day.' },
+            { emoji: '💡', title: 'Bright Ideas in AI', subtitle: 'Free tutorials, always.' },
+            { emoji: '🔥', title: 'Hot Topics in AI, Simplified', subtitle: 'Subscribe to stay in the loop.' },
+            { emoji: '✨', title: 'Effortless AI Learning', subtitle: 'Making complex topics simple.' },
+            { emoji: '💎', title: 'Get Your Daily Gem of AI', subtitle: 'Valuable content, totally free.' },
+            { emoji: '🎓', title: 'Your 60-Second AI Class', subtitle: 'Class is in session! Tap to join.' },
+            { emoji: '🌟', title: 'Shine with New AI Skills', subtitle: 'Easy tutorials for a big impact.' }
+        ];
         function updateMessage() {
             const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-            
+
             document.getElementById('messageEmoji').textContent = randomMsg.emoji;
             document.getElementById('messageTitle').textContent = randomMsg.title;
             document.getElementById('messageSubtitle').textContent = randomMsg.subtitle;
@@ -758,7 +790,7 @@ const messages = [
         window.addEventListener('load', () => {
             // Set random message after 1 second
             setTimeout(updateMessage, 1000);
-            
+
             // Change message every 4 seconds
             setInterval(updateMessage, 10000);
         });
@@ -773,7 +805,7 @@ const messages = [
             }
         });
     </script>
-    
+
     <!-- YOUTUBE SUBSCRIBE BUTTON COMPONENT END -->
     <script src="script.js" defer></script>
 </body>
