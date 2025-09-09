@@ -12,7 +12,7 @@ torchaudio==2.5.1
 
 # --- Core Application Dependencies ---
 
-git+https://github.com/mirbehnam/chatterbox.git
+git+https://github.com/mirbehnam/chatterbox.git@v1-multilingual
 
 # Core Web Framework
 fastapi

@@ -1,6 +1,7 @@
 # requirements.txt
 
-git+https://github.com/mirbehnam/chatterbox.git
+git+https://github.com/mirbehnam/chatterbox.git@v1-multilingual
+
 
 # Core Web Framework
 fastapi
