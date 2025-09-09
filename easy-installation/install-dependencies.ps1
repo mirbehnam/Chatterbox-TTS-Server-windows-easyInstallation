@@ -14,24 +14,22 @@ $config = @{
 }
 
 # --- Helper Functions ---
-
-# Function to find the executable path of a valid Python 3.10 installation
 function Find-Python310Executable {
     try {
-        $pythonPaths = Get-Command python -All -ErrorAction SilentlyContinue | Where-Object { $_.CommandType -eq 'Application' -and $_.Source -notlike "*WindowsApps*" } | Select-Object -Unique -ExpandProperty Source
+        $pythonPaths = Get-Command python -All -ErrorAction SilentlyContinue | 
+            Where-Object { $_.CommandType -eq 'Application' -and $_.Source -notlike "*WindowsApps*" } | 
+            Select-Object -Unique -ExpandProperty Source
         if ($pythonPaths) {
             foreach ($path in $pythonPaths) {
                 $versionOutput = & $path -c "import sys; print('.'.join(map(str, sys.version_info[:2])))" 2>$null
                 if ($versionOutput -eq $config.RequiredPythonVersion) {
                     Write-Host "Found compatible Python 3.10 at: $path" -ForegroundColor Green
-                    return $path # Return the full path
+                    return $path
                 }
             }
         }
-    } catch {
-        # Ignore errors and continue
-    }
-    return $null # Return null if not found
+    } catch { }
+    return $null
 }
 
 function Test-GitInstallation {
@@ -55,10 +53,9 @@ try {
         
         $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
         
-        # After installation, find the executable again
         $pythonExePath = Find-Python310Executable
         if (-not $pythonExePath) {
-            throw "Python 3.10 installation failed or was not found after install. Please restart your terminal and try again."
+            throw "Python 3.10 installation failed. Please restart your terminal and try again."
         }
     }
 
@@ -86,7 +83,6 @@ try {
     
     Write-Host "=== Pre-installation checks completed successfully! ===" -ForegroundColor Cyan
     
-    # Crucially, output the Python path for the parent script to capture
     return $pythonExePath
 
 } catch {

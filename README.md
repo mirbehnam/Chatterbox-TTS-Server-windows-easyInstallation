@@ -151,7 +151,7 @@ This project uses specific dependency files to ensure a smooth, one-command inst
 
 **1. Clone the Repository**
 ```bash
-git clone https://github.com/devnen/Chatterbox-TTS-Server.git
+git clone https://github.com/mirbehnam/Chatterbox-TTS-Server-windows-easyInstallation.git
 cd Chatterbox-TTS-Server
 ```
 
