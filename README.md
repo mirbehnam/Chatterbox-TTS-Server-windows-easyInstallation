@@ -1,4 +1,4 @@
-# 🌍 Multilingual Chatterbox TTS Server (Mmltilingual Edition)
+# 🌍 Multilingual Chatterbox TTS Server (Windows Edition)
 
 Enhanced [Chatterbox TTS](https://github.com/resemble-ai/chatterbox) server with **multilingual support** and **easy Windows installation**. Generate high-quality speech in 24+ languages with voice cloning capabilities.
 
@@ -67,6 +67,7 @@ Enhanced [Chatterbox TTS](https://github.com/resemble-ai/chatterbox) server with
    ```
 
 2. **Setup Environment**
+   > **Note:** Make sure you're using Python 3.10 for compatibility
    ```bash
    python3 -m venv venv
    source venv/bin/activate
